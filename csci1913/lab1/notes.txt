@@ -1,0 +1,12 @@
+- isbn - book identification
+    - 12 digit
+    - 13th digit (rightmost) is check digit
+
+detect 
+- sum odd digits
+- sum even digits
+- total = sumodd + (3 * sum even)
+
+
+
+total % 10 = 0, ISBN is valid
