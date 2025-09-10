@@ -16,6 +16,7 @@ class test_isbn(unittest.TestCase):
         self.assertEqual(make_isbn13(4),42)
         self.assertEqual(make_isbn13(9),97)
         self.assertEqual(make_isbn13(978316148410),9783161484100)
+        self.assertEqual(make_isbn13(0),0)
 
 
 if __name__ == '__main__':

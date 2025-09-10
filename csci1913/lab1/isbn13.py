@@ -1,21 +1,21 @@
 '''
+Class: CSCI 1913  (010)
 Name: Riley Motylinski
 Lab Partners: Samir, Cardin
 '''
 
-test_isbn = 978030640615 # last digit should be 7
-
+# lowest multiple with 3 to add to a digit to reach the nearest ten. SEE: make_isbn13()
 MIN_ADD = {
     0:0,
-    1:9, 
-    2:18,
-    3:27,
-    4:6,
-    5:15,
-    6:24,
-    7:3,
-    8:12, 
-    9:21
+    1:3, 
+    2:6,
+    3:9,
+    4:2,
+    5:5,
+    6:8,
+    7:1,
+    8:4, 
+    9:7
 }
 
 def sum_digits(isbn: int) -> int:
@@ -34,8 +34,6 @@ def sum_digits(isbn: int) -> int:
     for i in range(len(isbn)):
         current_digit = int(isbn[i])
 
-        
-        
         # odd digit
         if i % 2 == 1:
             odd_total += current_digit
@@ -78,32 +76,41 @@ def make_isbn13(number: int) -> int:
     Returns:
         integer
     '''
-    
+    # isbn matches minimum criteria to be processed
     if len(str(number)) <= 13 and number >= 0:
-        total = sum_digits(number)
-      
-        
-
-        print(f"{number} : {total}")
-        # need to add number here to get number to "nearest 10"
-        nearest_ten = total + (10 - (total % 10)) # not my favorite
-
-
+        isbn_total = sum_digits(number)  
     
         if len(str(number)) % 2 == 0:
-            # this will always be true for isbns with an
+            # need to add number here to get number to "nearest 10"
+            nearest_isbn_ten = isbn_total + (10 - (isbn_total % 10))
+
+            # this will always be true only for isbns with an
             # even number of digits
-            check_digit = nearest_ten - total
+            check_digit = nearest_isbn_ten - isbn_total
 
             # Just take the points now...
-            # I know it's an issue with my nearest_ten formula, but
-            # I don't know why
+            # I know there's an issue with my nearest_ten formula, but
+            # I don't know what it is. I do this to avoid adding two digits
+            # to the final isbn
             if check_digit == 10:
                 check_digit = 0
-            
-        # if an isbn has an odd number of 
+                 
+        # Otherwise, if an isbn has an odd number of digits, we have to add the lowest multiple with 
+        # 3 that will result in "0" as the last digit
+
+        # I have chosen to do this via a hardcoded dictionary for three reasons:
+        # 1) efficiency: I'm sure there is some pattern to the sequence of numbers, however
+        #    I was unable to identify one and it is faster (marginally) to have the values
+        #    instantly available rather than generate them at runtime
+        # 2) finite space: There are only 10 numbers that we need to know the key value for,
+        #    so, realistically, it isn't a big impact on the size or efficiency of the program 
+        #    to store these numbers. Had it been a more significant amount of data I would have
+        #    used loops to manually check or found an alternate approach
+        # 3) Avoiding loops: loops were an obvious choice to brute force the solution, however
+        #    running a loop against a known pattern an indefinite amount of times would be wasteful.
+
         else:
-            check_digit = MIN_ADD[total%10] // 3
+            check_digit = MIN_ADD[isbn_total%10]
     
         return int(str(number) + str(check_digit))
     else:
