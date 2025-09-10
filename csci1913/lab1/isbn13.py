@@ -79,21 +79,16 @@ def make_isbn13(number: int) -> int:
     # isbn matches minimum criteria to be processed
     if len(str(number)) <= 13 and number >= 0:
         isbn_total = sum_digits(number)  
-    
-        if len(str(number)) % 2 == 0:
-            # need to add number here to get number to "nearest 10"
+       
+        # number is already divisble by 10, so no need to add anything other than 0
+        if isbn_total % 10 == 0:
+            check_digit = 0
+        elif len(str(number)) % 2 == 0:
+             # need to add number here to get number to "nearest 10"
             nearest_isbn_ten = isbn_total + (10 - (isbn_total % 10))
-
             # this will always be true only for isbns with an
             # even number of digits
             check_digit = nearest_isbn_ten - isbn_total
-
-            # Just take the points now...
-            # I know there's an issue with my nearest_ten formula, but
-            # I don't know what it is. I do this to avoid adding two digits
-            # to the final isbn
-            if check_digit == 10:
-                check_digit = 0
                  
         # Otherwise, if an isbn has an odd number of digits, we have to add the lowest multiple with 
         # 3 that will result in "0" as the last digit
