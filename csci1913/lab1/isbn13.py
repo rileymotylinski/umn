@@ -69,7 +69,7 @@ def check_isbn13(isbn: int) -> bool:
 
 def make_isbn13(number: int) -> int:
     '''
-    calculates the check digit given a 12-digit isbn
+    calculates the check digit given a <13 digit isbn
 
     Args:
         number -- integer
