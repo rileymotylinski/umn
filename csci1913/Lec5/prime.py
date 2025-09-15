@@ -1,4 +1,4 @@
-from math import sqrt,ceil
+from math import sqrt
 
 
 def is_prime(n):
@@ -6,6 +6,4 @@ def is_prime(n):
         if n % i == 0:
             return False
     return True
-
-
 
