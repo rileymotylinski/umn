@@ -73,3 +73,7 @@ black:
     - prompting user is the moving user
     - move is within the bounds of the board
 - move is tuple of tuples (start, end)
+
+
+`get_valid_moves_for_stone(board, stone)`
+- stone will be a tuple of with row/column indices
