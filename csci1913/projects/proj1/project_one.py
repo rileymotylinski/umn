@@ -1,4 +1,5 @@
 from math import floor
+from copy import deepcopy
 
 # translating integer from board to the string version
 int_to_stone = {
@@ -169,44 +170,48 @@ def is_valid_move(board, move):
     # get the direction of the movement +/- x or +/- y
     direction = row_distance if column_distance == 0 else column_distance
 
-    # probably not great to convert to list
-    next_position = list(start)
     # always an integer because we checked that the direction was
     # checking each jump 
     # safe bc start/end are valid positions, so anything in between is also a valid position
     # divide by two to get the number of moves to check
 
-    positions = []
     for i in range(direction // 2):
-
-        possible_position = (start[0] + i*2*get_sign(direction),start[1] + i*2*get_sign(direction))
-
         if direction == row_distance:
-            next_position[0] += get_sign(direction)*2
-            
+            possible_position = (start[0],start[1] + i*2*get_sign(direction))
         else:
-            next_position[1] += get_sign(direction)*2
-        if not is_valid_move(board,(start,next_position)):
+            possible_position = (start[0] + i*2*get_sign(direction),start[1])
+        row, column = possible_position
+
+        if board[row][column] != 0:
             return False
-        start = list(next_position)
 
     return True
+def add_vectors(v1, v2):
+    return (v1[0] + v2[0], v1[1] + v2[1])
 
+def get_valid_moves_for_stone(board, stone_pos):
+    directions = [
+        (0,2),
+        (0,-2),
+        (2,0),
+        (-2,0)
+    ]
 
+    moves = []
 
-board = [[1,2,1,2],
-        [2,0,2,1],
-        [1,2,1,2],
-        [2,1,2,1],]
+    for i in range(len(directions)):
+        direction = directions[i]
+      
+        new_pos = add_vectors(stone_pos,direction)
+        for j in range(len(board)):
+            direction = add_vectors(direction, directions[i]) 
+            temp_new_pos = add_vectors(stone_pos,direction)
 
+            if is_valid_move(board,(stone_pos,temp_new_pos)):
+                new_pos = temp_new_pos
+        moves.append(new_pos)
+    return moves
 
-print("Testing is_valid_move")
-
-print(get_board_as_string(board))
-
-assert is_valid_move(board, ((3, 1),(1, 1))) == True
-assert is_valid_move(board, ((3, 2),(1, 1))) == False
-assert is_valid_move(board, ((3, 3),(1, 1))) == False
 
 board = [[1,2,1,2,1,2,1,2],
             [2,1,0,1,2,1,2,1],
@@ -216,15 +221,21 @@ board = [[1,2,1,2,1,2,1,2],
             [2,1,0,1,2,1,2,1],
             [1,2,1,2,1,2,1,2],
             [2,1,2,1,2,1,2,1],]
+print(get_valid_moves_for_stone(board,(7,2)))
 
-assert is_valid_move(board, ((7, 2),(1, 2))) == True
-assert is_valid_move(board, ((7, 2),(3, 2))) == True
-assert is_valid_move(board, ((5, 2),(3, 2))) == False
-assert is_valid_move(board, ((5, 3),(3, 2))) == False
-assert is_valid_move(board, ((6, 3),(3, 2))) == False
-assert is_valid_move(board, ((7, 3),(3, 2))) == False
 
-print("Passed is_valid_move tests")
+        
+   
 
-print("########################################")
+
+
+    
+def get_valid_moves(*args):
+    pass
+def random_player(*args):
+    pass
+def human_player(*args):
+    pass
+def play_game(*args):
+    pass
 

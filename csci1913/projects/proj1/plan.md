@@ -69,24 +69,10 @@ black:
 - `true` if move is possible, `false` if move is not possible
 - lots of checks?
     - jumping over alternate color
-    - empty start/end
+    - empty start end
     - prompting user is the moving user
     - move is within the bounds of the board
 - move is tuple of tuples (start, end)
 
-
-`get_valid_moves_for_stone(board, stone) -> list`
-- stone will be a tuple of with row/column indices
-- check cardinal directions, if valid, append move Tuple((startx,starty),(endx,endy))
-
-`get_valid_moves(board,player) ->list`
-- returns a list of possible moves given a player color
-
-`human_player(board, player)`
-- board, player is integer 1 (black) or 2 (white)
-- if there are no valid moves, return empty tuple
-- if there is a valid move, print to std
-- continually prompt user until valid input
-
-`random_player(board, player)`
-- random valid move for the player
+`get_valid_moves_for_stone(board,stone)`
+- 

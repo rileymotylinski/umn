@@ -1,8 +1,11 @@
 def commonality(*animals):
-    if len(animals) <= 1:
-        return set(animals)
+    
+    if len(animals) == 0:
+        return set()
+    
+    common = set(animals[0])
 
-    return set(animals[0]).union(commonality(animals[1:]))
-
-print(commonality((['a', 'b', 'c', 'c'],)))
-
+    for l in animals:
+        common.intersection(set(l))
+    return common
+    
