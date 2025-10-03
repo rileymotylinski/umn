@@ -1,12 +1,6 @@
 from math import floor
 from random import choice,randint
 
-# translating integer from board to the string version
-int_to_stone = {
-    0: " ",
-    1: "●", # black
-    2: "○" # white
-}
 
 def get_starting_index(row: int, column: int) -> int:
     '''
@@ -56,20 +50,31 @@ def get_board_as_string(board):
     str - game board as string with column/row indices, grid pattern, and colored stones
     '''
 
+    # translating integer from board to the string version
+    int_to_stone = {
+        0: " ",
+        1: "●", # black
+        2: "○" # white
+    }
     board_str = ""
+    # numbered columns
     board_str += "   " + " ".join([str(i%10) for i in range(len(board[0]))]) + "\n"
     for i in range(len(board) * 2):
         if i % 2 == 0:
+            # grid rows
             board_str += ("  ")
             board_str += ("+-"*len(board[floor(i/2)]))
             board_str += ("+\n")
         else:
+            # stone rows
             board_str += str(floor(i/2)%10) + " "
             for j in range(len(board[floor(i/2)])):
+                # converting a number to its stone via int_to_stone
                 board_str += (f"|{int_to_stone[board[floor(i/2)][j]]}")
             board_str += ("|\n")
     
     board_str += ("  ")
+    # have to append one last grid row
     board_str += ("+-"*len(board[floor(i/2)]))
     board_str += ("+\n")
     return board_str
@@ -83,8 +88,6 @@ def prompt_user_move():
     tuple(int,int) - position the user entered as an easily accesible tuple
     '''
     # prompts the user for one locations
-
-    # must do validation at some point
     row = int(input("Enter a row value:  "))
     column = int(input("Enter a column value:  "))
     
@@ -113,46 +116,6 @@ def in_board(board, pos):
     '''
     row,column = pos
     return not (row < 0 or row > len(board) - 1 or column < 0 or column > len(board[0]) - 1)
-
-def prep_board_human(board):
-    '''
-    Purpose: Repeatedly prompts user for a move, 
-    args:
-    board: list[int[]] - game board
-    returns:
-    None - this method mutates the board arg in place
-    '''
-    print(get_board_as_string(board))
-
-    valid = False
-
-    # get location 1
-    while not valid:
-        # must do input validation at some point
-        loc1 = prompt_user_move()
-
-        row1,column1 = loc1
-        
-        valid = not is_edge(board,row1,column1) 
-        if not valid:
-            print("Please pick a different stone")
-                 
-    valid = False
-
-    # get location 2
-    while not valid:
-        loc2 = prompt_user_move()
-        
-        row2, column2 = loc2
-
-        valid = (not is_edge(board,row2,column2)# not on edge
-                 and board[row1][column1] != board[row2][column2] # not the same color stone
-                 and loc1 != loc2 ) # not the same location
-        if not valid:
-            print("Please pick a different stone")
-        
-    board[row1][column1] = 0
-    board[row2][column2] = 0
 
 
 def get_sign(n):
@@ -215,17 +178,18 @@ def is_valid_move(board, move):
     if row_distance != 0 and column_distance != 0:
         return False
 
-    # get the direction of the movement +/- x or +/- y
+    # get the direction of the movement +/- row or +/- column
     direction = row_distance if column_distance == 0 else column_distance
 
     # always an integer because we checked that the direction was
     # checking each jump 
     # safe bc start/end are valid positions, so anything in between is also a valid position
-    # divide by two to get the number of moves to check
 
+    # abs so range actually run
     for i in range(1,abs(direction)):
-        
+        # repeatedly checking every possibly position from start->end
         if direction == row_distance:
+            # multiple by get sign to determine the direction of the move
             possible_position = (start[0] + i*get_sign(direction),start[1])
             
         else:
@@ -245,6 +209,48 @@ def is_valid_move(board, move):
    
 
     return True
+def prep_board_human(board):
+    '''
+    Purpose: Repeatedly prompts user for a move, 
+    args:
+    board: list[int[]] - game board
+    returns:
+    None - this method mutates the board arg in place
+    '''
+    print(get_board_as_string(board))
+
+    valid = False
+
+    # get location 1
+    while not valid:
+        # must do input validation at some point
+        # further validation will be made when move is actually made
+        loc1 = prompt_user_move()
+
+        row1,column1 = loc1
+        
+        valid = not is_edge(board,row1,column1) 
+        if not valid:
+            print("Please pick a different stone")
+                 
+    valid = False
+
+    # get location 2
+    while not valid:
+        loc2 = prompt_user_move()
+        
+        row2, column2 = loc2
+
+        valid = (not is_edge(board,row2,column2)# not on edge
+                 and board[row1][column1] != board[row2][column2] # not the same color stone
+                 and loc1 != loc2 ) # not the same location
+        if not valid:
+            print("Please pick a different stone")
+        
+    board[row1][column1] = 0
+    board[row2][column2] = 0
+
+
 def add_vectors(v1, v2):
     '''
     Purpose: adding the vectors of two components
@@ -285,6 +291,7 @@ def get_valid_moves_for_stone(board, stone_pos):
     returns:
     list[tuple(tuple(int,int),tuple(int,int))] - list of valid moves for a stone, where a move is a tuple(start_pos,end_pos)
     '''
+    # 4 cardinal directions
     directions = [
         (0,2),  # right
         (0,-2), # donwn
@@ -298,13 +305,14 @@ def get_valid_moves_for_stone(board, stone_pos):
         
         start_pos = stone_pos
         end_pos = start_pos
+        # next possible position
         possible_end_pos = add_vectors(stone_pos,direction)
 
         is_valid = in_board(board,start_pos) and in_board(board,possible_end_pos) and is_valid_move(board,(start_pos,possible_end_pos))
         i = 1
 
         while is_valid:
-            
+            # checking to next position. Can check every other because the index in between is valid
             possible_end_pos = add_vectors(start_pos,(direction[0]*i,direction[1]*i))
 
             moves.append((start_pos,end_pos))
@@ -316,7 +324,7 @@ def get_valid_moves_for_stone(board, stone_pos):
 
     def not_starting(s):
         return s != (stone_pos,stone_pos)
-    
+    # Because we automaticlaly append the last valid move, we have to remove any moves the fo from start -> start
     return list(filter(not_starting,moves))
 
 
@@ -333,8 +341,9 @@ def get_valid_moves(board, stone):
     valid_moves =  []
     for i in range(len(board)):
         for j in range(len(board[i])):
-
+            # possible moves for stone at current position
             moves = get_valid_moves_for_stone(board,(i,j))
+            # if the stone at the current position is the players stone and they have some moves
             if board[i][j] == stone and moves != []:
                 valid_moves += moves
     return valid_moves
@@ -350,6 +359,7 @@ def random_player(board,player):
     '''
     moves = get_valid_moves(board,player)
     if len(moves) != 0:
+        # returns a random choice for the available moves
         return choice(moves)
     else: 
         return tuple()
@@ -378,7 +388,7 @@ def human_player(board, player):
             loc2 = prompt_user_move()
 
            
-            
+            # see if the move exists in our valid moves
             valid = (loc1,loc2) in moves
             if not valid:
                 print(f"({loc1},{loc2}) is not a valid move. Try again.")
@@ -400,6 +410,7 @@ def ai_player(board, player):
     if len(moves) != 0:
         max = ((0,0),(0,0))
         for move in moves:
+            # Again, if we revist the idea of a move being a vector,finding the maximum magnitude move from the available moves
             move_vector = calculate_vector(move[1],move[0])
             max_move_vector = calculate_vector(max[1],max[0])
             if magnitude(move_vector) > magnitude(max_move_vector):
@@ -419,48 +430,58 @@ def make_move(board,move):
     '''
     if is_valid_move(board,move):
       
-        
+        # very similar logic to is_valid_move
         start_pos = move[0]
         end_pos = move[1]
     
-
+        # easy access to starting indices
         start_row,start_column = start_pos
         end_row,end_column = end_pos
         
+        # determines which player is actually moving by finding the stone at the starting position
         player = board[start_row][start_column]
-
+         # finding distances between start/end
         column_distance = end_column - start_column
         row_distance = end_row - start_row
-
+        # if the is a column-wise move
         if row_distance == 0:
+            # is it + or - column?
             direction = get_sign(column_distance)
             for i in range(abs(column_distance)):
+                # current possible position
+                # used for checking what stone is actually at the position - or is it empty?
                 
                 current_pos = board[start_row][start_column+direction*i]
                 if current_pos != 0 and current_pos != player:
                     board[start_row][start_column+direction*i] = 0
+        # if this is a row-wise move
         else:
+            # is it + or - row?
             direction = get_sign(row_distance)
             for i in range(abs(row_distance)):
+                # used for checking what stone is actually at the position - or is it empty?
                 current_pos = board[start_row + direction*i][start_column]
                 if current_pos != 0 and current_pos != player:
                     board[start_row + direction*i][start_column] = 0
+        # setting finalupdates to empty the starting position of the stone and "place it" at the ending position
         board[start_row][start_column] = 0
         board[end_row][end_column] = player
         
     else:
+        # returns None if the move made is not valid
         return None
 def play_game(board):
     '''
     Purpose: simulates a game between two ai opponents
     args:
     board: list[int[]] - game board
-    
     returns:
     int - winning player. 1 for black, 2 for white
     '''
+    # randomly deciding who goes first
     plays_first = randint(1,2)
 
+    # if player1/player2 have moves
     one_Has_Moves = len(get_valid_moves(board,1)) > 0
     two_Has_Moves = len(get_valid_moves(board,2)) > 0
 
@@ -470,18 +491,22 @@ def play_game(board):
 
         if plays_first == 1 and one_Has_Moves:
             move = ai_player(board, 1)
-
+            # make the move decided by ai
             make_move(board,move)
+            # swtiching players turn
             plays_first = 2
         elif plays_first == 2 and two_Has_Moves:
             move = ai_player(board, 2)
-
+            # make the move decided by ai
             make_move(board,move)
+            # swtiching players turn
             plays_first = 1
-       
+        # recaculating if both players have move
         one_Has_Moves = len(get_valid_moves(board,1)) > 0
         two_Has_Moves = len(get_valid_moves(board,2)) > 0
 
+
+        # if either playe doesn't have a move, then the other automatically wins
         if not one_Has_Moves:
             return 2
         if not two_Has_Moves:
