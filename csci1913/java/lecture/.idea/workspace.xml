@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5cbdefb2-4618-4b79-9e52-091467852db5" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../Project2/src/Card.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Project2/src/CardPile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Project2/src/Deck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Project2/src/Hand.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../labs/Lab07/src/DrawSolar.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../labs/Lab07/src/ShapeUtils.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../labs/Lab07/src/solar.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../labs/lecture/src/BiasedDice.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../labs/lecture/src/Dice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../labs/lab1 - isbn/isbn13.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../labs/lab1 - isbn/notes.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../labs/lab1 - isbn/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../labs/lab2 - nim/nim.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../labs/lab2 - nim/nim_tester.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../labs/lab2 - nim/outline.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../labs/lab2 - nim/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../labs/lab3/lab03files.zip" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../labs/lab3/longer_test_file.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../labs/lab3/messy_file.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../labs/lab3/original.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../labs/lab3/test_file.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../labs/lab3/weather.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../labs/lab3/weather_tester.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../labs/lab4/pricebook.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../labs/lab4/pricebook_tester.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec10/binary_search.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec10/linear_search.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec10/search.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec11/bubble_sort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec11/insertion_sort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec11/selection_sort.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec11/sorting.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec11/test_sorting.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec2-4/absolute.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec2-4/circle.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec2-4/loop_factorial.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec2-4/main.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec5/colors.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec5/main.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec5/prime.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec6/main.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec6/number_guessing.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec6/vowels_consonants.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec7/list_multiplication.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec7/lowercase_list.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec7/main.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec8/commonality.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec8/count_coins.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec8/grade_average.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec8/sequence_nesting.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec9/efficiency.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../lectures/lec9/get_max.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/proj1/plan.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/proj1/project_one.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../projects/proj1/test_project_one.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../zybooks/week3.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../zybooks/week4.ipynb" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="34106Cx1tkj9GwAB5w8ZikDX3KX" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.HoursMinutesSeconds.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Lecture.executor&quot;: &quot;Run&quot;,
+    &quot;Application.Oct15.executor&quot;: &quot;Run&quot;,
+    &quot;Application.OddEven.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="lecture" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="lecture" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5cbdefb2-4618-4b79-9e52-091467852db5" name="Changes" comment="" />
+      <created>1760365592403</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1760365592403</updated>
+    </task>
+    <servers />
+  </component>
+</project>

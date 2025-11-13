@@ -1,0 +1,163 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{gensymb}
+\usepackage[makeroom]{cancel}
+\usepackage{graphicx}
+\usepackage{comment}
+\usepackage{changepage}
+\usepackage[margin=1in]{geometry}
+
+
+\graphicspath{ {./images/} }
+
+\begin{document}
+\title{Acting Forces During Projectile Motion : An Analysis}
+
+\author{Riley Motylinski}
+
+\maketitle
+
+\section{Abstract}
+In this report, we sought to understand and confirm the universal forces acting on a projectile near the surface of the Earth
+through observation of its motion via video analysis. We examined the forces by shooting a projectile at a 3 different angles and analyzing 
+the position and velocity in both the x and y direction through Vernier video analysis. Ultimately we found $a_x = 0\pm0.36$ and $a_y \in \{-9.56\pm 1.46 m/s^2,-9.06\pm 1.34 m/s^2,-9.1\pm 0.1 m/s^2\}$. 
+Additionally, the differences between our experimental and theoretical ranges were $\{0m,0.064m,0.17m\}$, suggesting significant inaccuracy in our prediction for $g$. From this
+concluded that there were no forces acting in the x direction while remaining unable to absolutely prove that $a_y = g$
+
+\section{Introduction}
+Consider the common instance of an object flying through the air - perhaps a ball; Visually, we know that it moves in a parabolic path, but why? Why not in a straight line? It's important to understand projectile motion because 
+it forms the basis for the movement of everything from a golf ball to entire planets.
+So what exactly transforms and molds the shape of its arc? Is there a secret group of mole people pulling all of our projectiles down to keep us from realizing the ultimate truth that, in fact, gravity doesn't exist? Through controlled video analysis of a projectiles full range of motion in tandem with additional theoretical range calculations, we hope to understand 
+the universal forces applied to said object near the surface of the Earth.
+
+\section{Prediction}
+
+The time it takes for an object to fall can be derived as such:
+\begin{align*}
+y_1 = y_0 + v_{0y}t + \frac{1}{2}a_yt^2 \\
+0 = \Delta y + v_{0y}t + \frac{1}{2}a_yt^2
+\end{align*}
+which is a simple quadratic that can be solved via the quadratic equation:
+\begin{equation}
+    t = \frac{-v_{0y} \pm \sqrt{(v_{0y})^2 - 2a_y\Delta y}}{a_y}
+\end{equation}
+
+If we predict $a_x = 0$, $a_y = g \approx -9.81m/s^2$, then you can plug equation (1) into:
+\begin{align*}
+    x_1 = x_0 + v_{0x}t
+\end{align*}
+
+to get:
+
+\begin{equation}
+    \Delta x = R = v_{0x} \left(\frac{-v_{0y} \pm \sqrt{(v_{0y})^2 - 2g\Delta y}}{g}\right)
+\end{equation}
+
+Notice we can cancel then negative sign across the equation; in this case, this is the relevant answer. Additionally, it's essential to 
+clarify what $\Delta y$ means in this context - that being the distance from the 0 or starting point to the max height of the arc.
+Importantly, we have also chosen $g \approx -9.81 m/s^2$. Why? Well, if we were to draw a free body diagram for the projectile 
+in the air, we would see that the only acting force would be the ball's weight or $mg$. By Newton's second law:
+
+\begin{align*}
+\Sigma F_y &= ma_y\\
+\cancel{m}g &= \cancel{m}a_y\\
+\Rightarrow a_y &= g 
+\end{align*}
+
+From here, using our aforementioned prediction for $g$ and given a set of initial measurements, we can use the equation to calculate 
+the theoretical range of a projectile. These come out to be 0m, 1.02m, 1.37m for trails 1, 2, and 3, respectively. Whether our prediction of $g$ and $a_x$ is accurate rests upon the fact that our theoretical and 
+experimental results for range align.
+
+Furthermore, if the results of our experiment are accurately predicted by equation (1), then we can conclude the only force acting on the object
+\textit{is} gravity, otherwise the forces would be unbalanced and the acceleration—whether in the x or y direction—would not be 0 and $g$, respectively.
+
+\section{Procedure}
+3 trials were conducted where a projectile was launched from a cannon. one vertical (straight up), one at 15$\degree$ from the vertical, and one at 25$\degree$ from the vertical. The launcher was angled
+accordingly, then pushed in two "clicks".
+
+The Ipod was positioned on a plane parallel to that of the motion of the ball and far enough away from the table such that it 
+could capture the full range of motion. A meter stick was placed in frame for reference during video analysis.
+
+Finally,  videos of the projectile in motion were analyzed with vernier video analysis, generating a discrete set of points which were used to find plots 
+of x position vs. time as well as y velocity vs. time.
+\section{Analysis}
+
+\subsection{Trial 1 - Vertical Shot}
+
+\begin{center}
+   
+    \includegraphics[width=0.49\textwidth]{VerticalYVel.png}
+    \newline
+    \textbf{Fig. 1a}
+\end{center}
+
+\subsection{Trial 2 - 15$\degree$ Shot}
+\begin{center}
+    \includegraphics[width=0.49\textwidth]{15YVel.png}
+    \includegraphics[width=0.49\textwidth]{15XPos.png}
+    
+    \textbf{Fig. 2a} \hspace{200px} \textbf{Fig. 2b}
+    
+
+    
+   
+
+
+\end{center}
+    
+\subsection{Trial 3 - 25$\degree$ Shot}
+\begin{center}
+    \includegraphics[width=0.49\textwidth]{25YVel.png}
+    \includegraphics[width=0.49\textwidth]{25XPos.png}
+    \newline
+    \textbf{Fig. 3a}\hspace{200px}\textbf{Fig. 3b}
+\end{center}
+
+\subsection{Additional Observations}
+\textbf{Positional Uncertainty}: $\pm$ 0.36m. Measured blur of ball during video analysis. 
+\newline
+\textbf{Acceleration/X Velocity Uncertainty}: Trial 1 : 1.46 $m/s^2$, Trial 2 : 1.34 $m/s^2$, Trial 3 : 0.1 $m/s^2$. Formula used was $\|m_{extreme} - m_{regression}\|$
+
+
+\subsection{Written Analysis}
+
+First of all, uncertainties were obtained as mention above in section 5.4. Positional uncertainty (used in both x position and y velocity graphs) was found by measuring the maximum blur of the ball during the vernier video analysis step: 0.36m. The uncertainty for the acceleration was found by subtracting the slope of the extreme fit from the slope of the regression fit, then taking the absolute value.
+This turned out to be $1.46 m/s^2$ for trial 1, $1.34 m/s^2$ in trial 2, and $0.1m/s^2$ for trial 3. Similarly, the x velocity's uncertainty was found the same way; the results were $0.03 m/s$ for trial 2 and $0.01 m/s$ for trial 3.
+
+The experimental values for our range were $\pm$ 0.36m, 0.956 $\pm$ 0.36m, and  1.54 $\pm$ 0.36m for trials 1, 2, and 3, respectively. Subtracting these numbers from our predictive ranges, we find  the differences to be \{0m, 0.064m, 0.17m\}.
+These numbers demonstrate a significant spread in our theoretical and experimental ranges, showing an inherent inaccuracy in our measurements.
+
+From here a few conclusions can be made. First of all, $v_x$ is constant. Fig. 2b shows the velocity to be 1.15$\ m/s\ \pm$ 0.03, within our tolerance for uncertainty. The same holds true for Fig 3b., where $v_x = 2.02\ m/s\ \pm 0.01$. Therefore, the prediction $a_x = 0$ is correct.
+On the other hand the slopes of our velocity vs. time graphs \{-9.56$\pm 1.46 m/s^2$,-9.06$\pm 1.34 m/s^2$,-9.1$\pm 0.1 m/s^2$\} provide a much greater spread for $a_y$, none of which exactly 
+align with our prediction for $a_y = g$. So, while we cannot absolutely conclude that the only force in the y direction is gravity, accounting for the uncertainty in the slopes of our lines get us within $g$ for trials 1 and 2.
+
+
+\subsection{Error Analysis}
+
+First of all, the clamp attaching the launcher to the table was not  secured as well as it could have been. The launcher should have been exactly perpendicular 
+to the surface such that the ball traveled in a straight line along it. In reality, the launcher could easily sway in between launches 
+so that the ball was traveling at an angle relative to the surface. This would ultimately lead to inconsistent velocity measurement 
+across the launch angles as the ball moves either towards the camera or away from it. 
+
+Another possible source of error could have happened during the video analysis. The video analysis required tracking the motion of the ball via pacing 
+points at each frame step, ultimately forming the full arc through a set of discrete points. Doing this by hand could lead to an irregularly traced path for 
+the ball as it moves instead of the true parabolic path it follows. The inconsistency in the ball's tracked position could lead to variance in the true x and y velocity of the ball,
+ultimately affecting the graphs and final calculations.
+
+On a final note, Fig. 4 exemplifies the lack of consistency in our results. In trial 2 we overestimate the range and in trial 3 we underestimate the range. Had there been a pattern to the error such as the error always being negative or a always being off by a constant amount, there could possible be a systematic error in the way we were measuring, however such a big spread for differences means no such thing.
+From this we conclude a not-insignificant error during the measurement step—both during video analysis and setup which was not systematic in nature. It would be fair to point out that to get equation 2 we assumed $a_x = 0$ and therefore \textit{that} could be the source of error (suppose $a_x \neq 0$?), however we have shown that $v_x$ is constant, therefore the inaccuracy in the calculations 
+for the range have to be with our prediction of $g$
+
+\subsection{Answering The Question}
+From this, we cannot absolutely conclude that gravity is the only force in the y direction of a projectile. The model with which we predicted the motion of our projectile was not 
+accurate enough to prove that the only force acting on a projectile is gravity. A possible improvement could be to account for air resistance as well as the shape of our projectile and the drag it leads to. Maybe a gust of wind from the HVAC system in the room? It was a fairly small projectile. We \textit{do} know however, that these forces would be exclusively in the y direction, as we have proven that acceleration is 0 in the x direction.
+Just think about it, being able to accurately predict the path of a 
+projectile would help reduce the threat of meteors!
+
+\section{Conclusion}
+
+In this report, we sought to understand and confirm the universal forces acting on a projectile near the surface of the Earth. We were able to confirm that there were no forces acting within
+the x direction. However, after consistently measuring the acceleration of a projectile to be less than $g$ or with significant uncertainty (recall, $a_y \in \{-9.56\pm 1.46 m/s^2,-9.06\pm 1.34 m/s^2,-9.1\pm 0.1 m/s^2\}$) and calculating the differences between our experimental and theoretical ranges as \{0m, 0.064m, 0.17m\} , it was impossible to absolutely conclude whether gravity is the only force influencing
+an objects range of motion along the y direction.
+
+\end{document}
