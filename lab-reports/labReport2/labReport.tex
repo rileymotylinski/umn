@@ -1,0 +1,137 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+\graphicspath{ {./photos/} }
+
+\newcommand\numberthis{\addtocounter{equation}{1}\tag{\theequation}}
+
+\begin{document}
+\title{Lab Report 2 : Conservation of Momentum}
+\author{Riley Motylinski}
+
+\maketitle
+\section{Abstract}
+
+    During this experiment, a series of four collisions between two carts of varying mass were performed to analyze conservation of momentum.
+    The equation $\frac{v_f}{v_a} = \frac{m_a}{m_a + m_b}$  was utilized by plotting $\frac{v_f}{v_i}$ 
+    vs. $m_a$ and using the slope to compare a theoretical and experimental value for the mass of our 
+    system. We found the experimental slope to be $0.793 \pm 0.507 1/kg$ while the theoretical slope was 
+    $0.66 1/kg$. Because our theoretical value was within the range of our experimental value, and we derived our equation from the underlying assumption of conservation of momentum,
+    we were able to show that momentum is conserved in inelastic collisions.
+
+
+\section{Introduction}
+
+    We sought to determine whether momentum is conserved during a cart to cart collision by studying a battery of collions between two carts of varying mass. The best example of why this matters in real life is a car crash.
+    If we understand how momentum changes (or doesn’t) before, during, and after a crash, then we can seek to design better safety systems to protect people
+    during crashes of varying intensity. 
+
+
+\section{Prediction}
+
+For this experiment, we guessed momentum would be completely conserved. This prediction was based on the fact that we learned momentum is conserved in a perfectly inelastic collision, exactly what we were modelling.
+
+By consequence, should momentum (and only the momentum) be conserved during a perfectly inelastic collision:
+
+
+\begin{align*}
+    p_i &= p_f\\
+    m_av_a + m_bv_b &= m_av'_a + m_bv'_b\\
+\end{align*}
+Because the carts will stick together: $v'_a = v'_b = v_f$. Additionally, $v_a = v_i$ because $v_b = 0$.
+\begin{align*}
+    m_av_i + m_b(0) &= v_f(m_a + m_b)\\
+    \frac{v_a}{v_f} &= \frac{m_a + m_b}{m_a}\\
+    \implies \frac{v_f}{v_a} &= \frac{m_a}{m_a + m_b} \numberthis \label{eqn1}
+\end{align*}
+
+
+
+We can then plot $\frac{v_f}{v_i}$ as a function of $m_a$ and our real prediction becomes that the slope of the said graph hould be equal to $\frac{1}{m_a + m_b}$.
+And if it is, by the fact that we derived said slope from the assumption of conservation of momentum,  then we can conclude momentum is conserved in a perfectly inelastic collision.
+
+Numerically speaking, and plugging in the mass of our carts, the theoretical slope is $0.661 1/kg$.
+
+Additionally, the following formula will be used to determine the error bars on the final graph:
+
+\begin {align}
+\sigma_{\frac{v_f}{v_i}} = \frac{v_f}{v_i}\sqrt{(\frac{\sigma_{v_f}}{v_f})^2 + (\frac{\sigma_{v_i}}{v_i})^2} \numberthis \label{eqn2}
+\end {align}
+
+Where $\sigma_{v_i}$ and $\sigma_{v_f}$ are the uncertainty of the slopes of the extreme fit lines for the before and after velocity graphs, respectively.
+
+
+
+
+
+\section{Procedure}
+Initial mass measurements of the cart A, cart B, and the masses were taken. While the carts were measured independently, the given masses were labled and did not need to measured..
+
+We performed a series of 4 experiments where we varied the mass between the two carts. Mass was varied by distributing 4 metal blocks on either cart. Trial 1 had 2 blocks on each cart, trial 2 was 3 on cart A and 1 on cart B, trial 3 was 1 on cart A and 3 on cart B and trial 4 was 0 on cart A and 4 on cart B.  
+
+First the carts were placed on the track and loaded with masses. We then aligned the ipod parallel to the plane of the track and placed it far enough away to capture the whole range of motion. 
+
+In each of the trials, cart A was given an initial velocity to press into cart B where it would stick via velcro, simulating an inelastic collision. Videos from the ipod were transferred into Vernier video analysis and velocity was determined by plotting position vs. time of the carts. 
+
+
+
+\section{Analysis}
+
+\subsection{Graphs}
+\begin{center}
+   
+    \includegraphics[width=0.75
+    \textwidth]{before.png}
+    \newline
+    \textbf{Fig. 1} - Trial 3 before collision
+\end{center}
+\begin{center}
+   
+    \includegraphics[width=0.75
+    \textwidth]{after.png}
+    \newline
+    \textbf{Fig. 2} - Trial 3 after collision
+\end{center}
+\begin{center}
+   
+    \includegraphics[width=0.75
+    \textwidth]{final_graph.png}
+    \newline
+    \textbf{Fig. 3} - Final Graph
+\end{center}
+
+\subsection{Written Analysis}
+Prior to experimentation carts were massed at $m_a = 0.2571 \pm 0.0001 kg$ and $m_b = 0.2629 \pm 0.0001 kg$. 
+
+Note that in trial three, error bars were obtained by measuring the maximum blur of the cart during the video analysis, and was found to be $\pm 0.05m$. This was the greatest of any of the trials.
+
+For trial 3 we found the linear fit of the x position vs. time prior to the collision to have a slope of $0.386 m/s$ while the extreme fit of $0.5m/s$. We subtract these two slopes to find uncertainty. This makes the $v_{initial} = 0.386 \pm 0.114 m/s$. As for the velocity after collision 3, the linear fit for the x position vs. time had a slope of $0.11 m/s$ while the extreme fit had a slope of $0.183 m/s$. Subtracting these two slopes to find uncertainty, it is found that $v_{final} = 0.11 \pm 0.073 m/s$. 
+
+
+The maximum uncertainty was in trial 3, so that's what we plugged into equation 2 from the prediction section to find the error bars. This would ensure that we take upper bounds of error to consider as many experimental outcomes as possible. This value came out to be $0.207/kg$
+
+
+The linear fit for our final graph of $\frac{v_f}{v_i}$  vs. $m_a$ had a slope of $0.793/kg$ while the extreme fit had a slope of $1.3/kg$. Subtracting these two slopes to find the uncertainty for our final slope gave $\pm 0.507 1/kg$.
+
+Revisiting our numerical prediction, we see that $0.661/kg$ is within the range of $0.793 \pm 0.507 1/kg$. Therefore we have verified our prediction that m = $\frac{1}{m_a + m_b}$, and we can claim momentum is conserved.
+
+\subsection{Error}
+The sources of error can be attributed to the marginal inconsistencies between our idealized model and the setup.
+
+First of all, we assumed each of the masses on the cars were exactly what they were labeled. Realistically, marginal differences in their masses would offset the calculated overall masses for the carts in each collision, leading to inconsistencies in theoretical and experimental final results, i.e $0.661/kg$ is an underestimate because the total mass of cart A was greater exactly as was labeled.
+
+Secondly, non conservative forces certainly could have come into play here. The friction between the wheels and the track or even air resistance make it impossible to calculate the exact velocity before the two carts collide. In our calculations we assume a constant velocity of the cart, but in reality fractional changes in velocity exist between our last taken data point and when the two carts collide. This would lead to an incorrect prediction for what the initial momentum of the system was, and make it impossible to compare to the momentum after the collision.
+
+On a similar note, the cars did not necessarily stick together when they collided. Instead, velcro would keep them stuck together. During our prediction, we assumed a perfectly inelastic collision, which means the only thing that is conserved is momentum. With the velcro, however, the slight compression and decompression of the velcro almost acts as a spring, conserving a small amount of kinetic energy, and thus breaking the conditions of a perfectly inelastic collision and breaking the underlying presumptions of our prediction. To fix this, we would have to model both the kinetic energy and momentum in our initial prediction.
+
+
+\section{Conclusion}
+
+In conclusion, we tested a series of collisions under different conditinons and used conservation of momentum to find
+    the equation $\frac{v_f}{v_a} = \frac{m_a}{m_a + m_b}$, which was plotted.
+    We found the experimental slope to be $0.793 \pm 0.507/kg$ while the theoretical slope was 
+    $0.66 1/kg$, confirming conservation of momentum. This is important for situations such as high speed collisions between cars so that road safety systems can better protect the people inside their cars.
+    Perhaps now knowing that people's cars conserve momentum, cities can design safer barriers for cars to crash into or car manufactures can more safely design their cars to crumple when they crash.
+
+\end{document}

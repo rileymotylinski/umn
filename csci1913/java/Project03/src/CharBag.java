@@ -1,137 +1,164 @@
-import java.util.Random;
+import java.lang.Math;
 
 public class CharBag {
-    // stop character of "."
-    // TODO : USE STATIC VARIABLE TO LETTER SAMPLER CLASS
-    private final int STOP_CHARACTER_UNICODE = 46;
-    private final int UNICODE_OFFSET = 97;
+    private int[] count;
+    // cumulative distribution function; stores ranges of probability for random sampling
+    private double[] cdf;
+    // unicode for 'a'
+    final private int UNICODE_OFFSET = 97;
+    // unicode for '.'
+    final private int STOP_CHARACTER = 46;
 
-    private int[] count = new int[27];
-    private double[][] distribution;
 
-    private boolean updated = false;
+    private int adds;
+    private int removes;
 
-    private int removes = 0;
+    public CharBag () {
+        this.count = new int[27];
+        this.cdf = new double[27];
 
-    private boolean inAlphabet(int unicode) {
-        // >= a, <= z
-        return unicode >= UNICODE_OFFSET && unicode <= 122;
+        updateCdf();
+
+        this.adds = 0;
+        this.removes = 0;
     }
-    private boolean inAlphabet(char c) {
-        return inAlphabet((int) c);
+
+    /**
+     * returns the index for a character. Hash uses intrinsic unicode/ASCII value
+     * @param c character to find index for
+     * @return index in our count
+     */
+    public int hash(char c) {
+        int charUnicode = (int) Character.toLowerCase(c);
+
+        return charUnicode >= UNICODE_OFFSET && charUnicode <= UNICODE_OFFSET + 26
+                ? charUnicode - UNICODE_OFFSET // get letter index
+                : 26; // stop character count is stored at the end of the array
     }
 
-    // i'd rather just get this on the fly in O(27) or O(1)
-    private int getLength() {
-        int total = 0;
-        for (int i = 0; i<this.count.length;i++){
-            if (this.count[i] > 0){
-                total += 1;
-            }
+    /**
+     * translates an index into a character
+     * @param i index of character
+     * @return character at the index
+     */
+    public char unhash(int i) {
+        if (i > 25 || i < 0) {
+            return (char) STOP_CHARACTER; // if not in charbag, return stop character
         }
-        return total;
+        // casting to character
+        return (char) (i + UNICODE_OFFSET);
     }
 
-    private void updateDistribution() {
-        this.distribution = new double[this.getLength()][2];
-        int totalCharacters = this.sumCharBag();
+    // O(n)
 
-        // divide each non-updated number by 1 + previous length
-        //
-        int distributionIndex = 0;
-        double sum = 0;
-        for (int i = 0; i < this.count.length; i++){
-            if (this.count[i] > 0) {
-                double probability = (double) this.count[i]/totalCharacters;
+    /**
+     * updates the distribution representing the probability of nextLetter
+     */
+    private void updateCdf() {
+        double total = 0;
+        int totalChars = this.getSize();
 
-                // setting next probability interval
-                // guarantees montone
-                this.distribution[distributionIndex][0] = sum;
-                sum += probability;
-                this.distribution[distributionIndex][1] = toUnicode(indexToChar(this.count[i]));
-                distributionIndex += 1;
-
-            }
-        }
-    }
-    private int toUnicode(char c){
-        int unicodeNumber = (int) c;
-
-        if (inAlphabet(unicodeNumber)) {
-            return unicodeNumber;
-        }
-        return STOP_CHARACTER_UNICODE;
-    }
-
-    private int charToIndex(char c){
-        int unicodeNumber = toUnicode(c);
-        // offset of a letter
-        return unicodeNumber != STOP_CHARACTER_UNICODE ? unicodeNumber - UNICODE_OFFSET : 27;
-    }
-
-    private char indexToChar(int i) {
-        return i != 27 ? (char) (i + UNICODE_OFFSET) : (char) STOP_CHARACTER_UNICODE;
-    }
-
-    private int sumCharBag(){
-        int j = 0;
+        // need to reset all values to 0 before finding distribution
+        this.cdf = new double[27];
 
         for (int i = 0; i < this.count.length; i++){
-            j += count[i];
+
+            if(count[i] != 0){
+                // normalization ( 0 <= P(character) <= 1 )
+                double probabilityLetter = (double) count[i] / totalChars;
+                total += probabilityLetter;
+                this.cdf[i] += total;
+
+            }
+
         }
-        return j;
     }
 
-    public void add(char c) {
-        this.count[charToIndex(Character.toLowerCase(c))] += 1;
-        this.updated = true;
+    /**
+     * adds a character to count. Does NOT update distribution.
+     * @param c character to add
+     */
+    public void add (char c) {
+        // updating at hash; everything is default to 0 not null
+        count[hash(Character.toLowerCase(c))] += 1;
+        // store adds for O(1) size calculation
+        this.adds += 1;
     }
 
+    /**
+     * removes a character if it exists
+     * @param c character to remove
+     */
     public void remove(char c) {
-        c = Character.toLowerCase(c);
-        int currentCount = this.count[charToIndex(c)];
-        this.updated = true;
-        if (currentCount > 0) {
-            this.count[charToIndex(c)] -= 1;
+        int charIndex = hash(Character.toLowerCase(c));
+        // only remove if there actually is anything to remove
+        if(count[charIndex] > 0) {
+            count[charIndex] -= 1;
             this.removes += 1;
         }
 
     }
 
+    /**
+     * gets count of a character in the CharBag
+     * @param c character to get count of
+     * @return count of character
+     */
     public int getCount(char c) {
-        c = Character.toLowerCase(c);
-
-        return this.count[charToIndex(c)];
+        return count[hash(Character.toLowerCase(c))];
     }
 
-    public int getSize(){
-        return sumCharBag() - this.removes;
+    /**
+     * gets size of the character bag, defined as number of characters in the CharBag
+     * @return number of characters is CharBag
+     */
+    public int getSize() {
+        int total = this.adds - this.removes;
+        return Math.max(total, 0);
+
     }
 
-    // O(2n) as of right now, is there a way to make the update distribution conditional?
-    public char getRandomChar() {
-
-        // Average case should be better. Avoids unnecessary updates. Worst case is still O(2n) or O(n)
-        if(this.updated) {
-            // only need to update distribution when you call getRandomChar
-            updateDistribution();
-            this.updated = false;
+    /**
+     * user friendly version of CharBag for debugging
+     * @return e.g. CharBag{a : 0, b: 1,..., z: 5, . : 2}
+     */
+    public String toString() {
+        String s = "CharBag{";
+        for(int i = 0; i < this.count.length-1; i++) {
+            s += (unhash(i) + ":" + count[i] + ", ");
         }
 
+        s += unhash(26) + ":" + count[26] + "}";
+        return s;
+    }
 
+    /**
+     * Returns a random character from the character distribution
+     * @return rangdom character from current charbag
+     */
+    public char getRandomChar() {
+        // O(n) complexity right now - how to get O(1)?
+        // make sure distribution is up to date with current charabag
+        updateCdf();
 
-        Random r = new Random();
-        double choice = r.nextDouble();
+        // random float choice; this is why we normalize in updateCdf()
+        double choice = Math.random();
 
-        for (int i = 0; i < this.distribution.length; i++){
-            if (choice > this.distribution[i][0]){
-                return (char) this.distribution[i][1];
+        // if choice is the first character
+        if (choice <= this.cdf[0]){
+            return unhash(0);
+        }
+
+        // linear search for cdf[i-1] <= choice < cdf[i]
+        for(int i = 1; i < this.cdf.length - 1; i++) {
+            if (choice >= this.cdf[i - 1] && choice < this.cdf[i]){
+                // returns unhashed version of character
+                return unhash(i);
             }
         }
-        return (char) STOP_CHARACTER_UNICODE;
+        // choice was stop character
+        return (char) STOP_CHARACTER;
     }
-
-
 
 
 

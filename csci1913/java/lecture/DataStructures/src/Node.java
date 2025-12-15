@@ -5,7 +5,7 @@ public class Node<T> {
     private Node<T> nextNode;
 
 
-    // constrctur
+    // constructor
 
     public Node(T nodeData) {
         this.nodeData = nodeData;
