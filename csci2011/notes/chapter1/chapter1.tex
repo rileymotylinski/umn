@@ -1,0 +1,249 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+\usepackage[margin=0.75in]{geometry}
+
+
+\begin{document}
+
+
+
+\section{Chapter 1}
+\hrule
+\vspace{10px}
+
+
+\subsection{Propositional Logic}
+   
+
+\textbf{Proposition} - a statement with an answer of either \textit{true} or \textit{false}. Every proposition should have a negation\newline
+\textbf{Negation} - let $p$ be a proposition. Then the negation of $p$ is the
+statement "It is not the case that $p$", or, $\neg p$. A negation of a
+proposition forms an entirely new proposition.
+
+\vspace{10px}
+Similarly, we join two propositions via \textit{conjunctions} and \textit{disjunctions}:\newline
+\textbf{Conjunction} - Let $p$, $q$ be propositions. Their conjunction is $p$
+\textbf{and} $q$ or $p \land q$ e.g. The steak was cooked and the grill was
+hot.\newline
+\textbf{Disjunction} - $p$ and $q$'s disjunction is $p$ or $q$, or $p \lor q$, e.g. it is cloudy or it is sunny. THere also exists an exclusive or
+
+\vspace{10px}
+\textbf{Q: }Why is it that I can only think of two successive propositions
+(Because the grill was hot, the steak was cooked?) What is that called? What are
+the implications?
+\vspace{10px}
+
+
+\textbf{Conditional Statement} - the proposition if $p$, then $q$, or $p
+\rightarrow q$. Also known as an \textit{implication}. It is only false when $p$
+is true and $q$ is false (in other words, when $p$ does not imply $q$ or $F
+\rightarrow F$). Think iof it like the binding terms of a contract; you only
+break it if you fulfill the rhs, and don't fulfill the lhs $p$ is the antecedent
+while $q$ is the consequence. Only care about rhs when lhs is truex\newline
+Tricky terminology:
+\begin{itemize}{}{}
+    \item "$q$ unless $\neg p$"
+    \item "$p$ only if $q$" - p is only true when q is true. The very definition
+    of a conditional statement
+\end{itemize}
+
+\subsubsection{Truth Tables}
+Holds all possible combinations of the truth values of those combinations.
+Useful for proving equivalences of simple (low number of variables)
+propositions.
+
+$2^n$ rows where $n$ is the number of variables in the compound proposition.
+\subsubsection{Properties of implications}
+
+Consider the following statement:\newline
+\indent\textit{If it is raining outside, then it is cloudy}
+
+\vspace{10px}
+\noindent
+\textbf{Inverse} - $\neg p \rightarrow \neg q$. Equivalent to \textit{converse}.
+e.g. If it is not raining outside, then it is not cloudy.\newline
+\textbf{Converse} - $q \rightarrow p$. Equivalent to \textit{inverse}. e.g. If
+it is cloudy, then it is raining outside. Simpilest one, so the shortest.\newline
+\textbf{Contrapositive} - $\neg q \rightarrow \neg p$. The only one to always
+has the same truth value as the original implication, $p \rightarrow q$. e.g. If
+it is not cloudy outside, then it is not raining
+
+\subsubsection{Biconditionals}
+$(p \iff q) \lor [(p \rightarrow q) \land (q \rightarrow p)]$\newline
+\textbf{Biconditional} - iff and only if; q must be a "subset" of p. T here is
+only one path forward, e.g. "you can take a flight iff you buy a ticket. "two way street" of a conditional statement.
+"It is necessary and sufficient"
+\vspace{10px}
+\textbf{Q: } are $p \iff q$ and $q \iff p$ logically equivalent?
+\textbf{A: } Yes! $\iff$ is commutative
+\vspace{10px} 
+
+\subsubsection{Precedence}
+\begin{enumerate}
+    \item $\neg$ 
+    \item $\land\ \&\ \lor$ 
+    \item $\rightarrow\ \&\ \iff$
+\end{enumerate}
+
+\subsection{Propositional Equivalences}
+
+Replacement of one compound propositional statement with another is the
+foundation of mathematical proof\newline
+\textbf{Tautology} - A statement which is always true, no matter the "input"
+conditionals ($p$/$q$), e.g. $p \lor \neg p$\newline
+\textbf{Contradiction} - A statement which is always false, no matter the
+"input" conditionals. e.g. $p \land \neg p$.\newline
+\textbf{Contingency} - A statement which varies based on the "input"
+conditionals.
+
+\subsubsection{Logical Equivalence}
+The ability to replace one compound proposition with another which evaluates to
+the same truth table, is known as \textbf{logical equivalence} or $p \equiv
+q$. This new symbol, $\equiv$, is not connector but rather a shortening for the statement that $p \iff q$ is a tautology.
+\vspace{10px}
+Two compound propositions p and q are equivalent when $p \iff q$ is a tautology.
+
+\subsubsection{Important Equivalences}
+\begin{enumerate}
+    \item $p \implies q \equiv \neg p \lor r\ \text{Definition of Implication}$
+    \item $p \implies r \equiv \neg q \implies p$
+    \item $p \iff r \equiv (p \implies r) \land (r \implies p)\ \text{Definition of the Biconditional}$
+    \item $p \land T \equiv p$, $p \lor F \equiv p\ \text{Identity Law}$
+    \item $p \land F \equiv F$, $p \lor T \equiv T\ \text{Domination Law}$
+    \item $p \lor p \equiv p$, $p \land p \equiv p\ \text{Idempotent Law}$
+    \item $\neg(\neg p) \equiv p\ \text{Double Negation}$ 
+    \item $p \lor q \equiv q \lor p\ \text{Commutative Law, also works for conjunctions}$
+    \item $(p \lor q) \lor r \equiv p \lor (q \lor r)\ \text{Associative Law, works with conjunctions}$
+    \item $p \lor (q \land r) \equiv (p \lor q) \land (p \lor q)\ \text{Distributiive law, opposite for conjunctions}$
+    \item $p \lor (p \land q) \equiv p, p \lor (p \land q)\equiv p\ \text{Absorption Laws}$
+\end{enumerate}
+
+\subsubsection*{De Morgans Law}
+De Morgan's laws provide the following two equivalences:
+\begin{align}
+\neg (p \lor q) &\equiv \neg p \land \neg q \\
+\neg (p \land q) &\equiv \neg p \lor \neg q
+\end{align}
+Essentially, a "distribution" of the negation (not to be confused with the
+\textit{distributive laws})
+
+\vspace{10px}
+\textbf{Q: } Is there a simple derivation of De Morgan's laws using logical
+equivalences? When does it become appropriate to use logical equivalences as
+opposed to truth tables?
+\vspace{10px} 
+
+\subsubsection{Proof Using Logical Equivalence}
+The simplest type of proof involves using a series of logical equivalences to
+conclude a different statement given and initial conditional. It is important to
+list all steps along with the associated law.
+
+\subsubsection{Satisfiability}
+A proposition is \textit{satisfiable} if, for some set of values of its
+conditions $\{p_1, p_2\ ...\ p_{n-1}, p_n\}$, the proposition can evaluate to True. If a
+proposition is not satisfiable, then it is considered \textit{unsatisfiable}
+
+\subsection{Predicates and Quantifiers}
+\textbf{Subject} - object which holds some property, or a \textit{predicate}\newline
+\textbf{Predicate} - some quality describes a \textit{subject}, e.g. "is greater
+than 3". Each predicate can have a predicate function, $P(x)$, which allows you
+to evaluate the truth of a predicate\newline
+$\bullet$ \textbf{Precondition} - conditions which describe valid input\newline
+$\bullet$ \textbf{Postcondition} - all conditions the output of a program must satisfy\newline
+
+\subsubsection{Quantifiers}
+\textbf{Quantification} - creating a proposition from a propositional function.
+2 types: \textit{universal quantification} and \textit{existential
+quantification}. I really like thinking of it in terms of set theory/probability
+space; the universal quantifier characterizes an entire class while the
+existential quantifier describes an object as a part of another class.
+
+\subsubsection{The Universal Quantifier}
+A domain must be specified when working with universal quantifiers. Most
+mathematical statements are universal quantifiers (hey, that's an existential
+quantifier right there!). Variables used immediately after both the universal
+and existential quantifier are considered \textit{it}. Any  other variables are \textit{free}
+
+$$
+\text{"P(x) for all values of x in the domain"$$}
+$$\newline
+or...\newline
+$$
+P(x)\ \forall\ x
+$$
+Any statement for which P(x) is false is called a \textit{counterexample}. Just
+like any other conditional, this can evaluate to true or false:
+
+$$
+x + 1 > x \forall x \in \mathbb{R}
+$$
+evaluates to true while:
+$$ 
+2x < x\ \forall\ x \in \mathbb{R}
+$$
+evaluates to false. Even a single counter example leads to a universal
+quantifier evaluating to false. It is implicitly assumed that the domain is
+non-empty.\newline
+$$
+\forall x P(x) \equiv P(x_1) \land P(x_2) \land ... \land P(x_n)
+$$
+
+\subsubsection{Existential Quantifier}
+The existential quantifier can be written as:
+$$
+\text{"There exists an element}\ x\ \text{in the domain s.t. P(x)"}
+$$
+otherwise known as..
+$$
+\exists\ x\ P(x)
+$$
+\newline
+\textbf{Q: } are we \textit{always} implicitly working with positive integers?
+\newline
+
+Similarily, $\exists$ evaluates to true when even a single example exists where
+the predicate function evaluates to true. In this way can it be thought of as
+the negation of $\forall$?\newline
+\newline
+$$
+\exists x P(x) \equiv P(x_1) \lor P(x_2) \lor ... \lor P(x_n)
+$$
+both $\exists$ AND $\forall$ have the highest order of precedence.
+\subsubsection{Quantifiers with Restricted Domains}
+Short hand for:
+$$
+\exists (x < 0 \implies x - 1 < 0)
+$$
+is:
+$$
+\exists x < 0\ (x - 1 < 0)
+$$
+Additionally:
+$$
+\exists x < 0 (P(X)) \equiv \exists (x < 0 \land P(x))
+$$
+\subsection{Negating Quantified Expressions}
+$$
+\neg \forall x P(x) \equiv \exists x \neg P(x)
+\neg \exists x Q(x) \equiv \forall x \neg Q(x)
+$$
+This is mainly derived from De Morgan's law(s) and the expansion of the
+universal/existential quantifiers.
+
+\section{Nested Quantifiers}
+consecutive quantifiers are simply \textit{and}-ing both (or many) of
+the quantifiers. Pretty simple to read. The book compares them to nested loops
+in a computer program. If an inner loop is false (or true! in the case of the
+existential quantifier), then the outer loop can also be concluded to be
+false.\newline
+\newline
+While quantifiers of the same type can be exchanged, quantifiers of the opposite
+type do not play as nice.
+\subsection{Negating Nested Quantifiers}
+Many times, we move the negation inside the quantifers and flip the quantifier
+so that the negation is on the innermost statement.
+\end{document}

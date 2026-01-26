@@ -1,0 +1,28 @@
+1- write these in English:
+
+1.1)not p
+
+1.2) If not g, then h
+
+1.3) c and not d
+
+1.4) b or g
+
+1.5) if not e, then h
+
+2- Give the truth values of of each of the parts 1.1 through 1.5 above based on the truth values you collected from student1 on each of the propositions h, p, g, d, c, b, s, and e. You have to state the truth value of each involved proposition mentioned in each part. Here's an example on handling part 1.4:
+
+
+According to student 1, p is true so 1.1 evaluates to false.
+According to student 1, g is false and h is true so 1.2 evaluates to false.
+According to student one, c is true and d is true, so 1.3 evaluates to false.
+According to student 1, b is true and g is false, so 1.4 evaluates to true.
+According to student 1, e is false and h is true so 1.5 evaluates to true.
+
+3) Give the truth values of of each of the parts 1.1 through 1.5 above based on the truth values you submitted in the assignment on your own opinion on each of the propositions h, p, g, d, c, b, s, and e. You have to state the truth value of each involved proposition mentioned in each part. Here's an example on handling part d:
+
+According to me, p is false so 1.1 evaluates to true.
+According to me g is false and h is false so 1.2 evaluates to false.
+According to me c is false and d is true so 1.3 evaluates to false.
+According to me b is false and g is false so 1.4 evaluates to false.
+According to me e is true and h is false so 1.5 evaluates to false.
